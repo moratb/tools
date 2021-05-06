@@ -22,11 +22,7 @@ for i in payments_users_table['platform'].unique():
     plt.figure()
     sns.distplot(diffs)
     plt.axvline(real_diff, 0,5)
-    
-    if real_diff>=0:
-        print(i,'two-sided p_value: ', sum(diffs>real_diff)/len(diffs)*2)
-    else:
-        print(i,'two-sided p_value: ', sum(diffs<real_diff)/len(diffs)*2)
+    print(i,'two-sided p_value: ', sum(list(map(abs,diffs))>=abs(real_diff))/len(diffs) )
   
   
   
